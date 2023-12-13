@@ -13,16 +13,26 @@ import java.util.Scanner;
 public class ProyectoFinalEstructura_Algoritmos {
 public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    ColaTickets colaTickets = new ColaTickets(); // Crear una instancia de ColaTickets
+    ColaTickets colaTickets = new ColaTickets();
     int opcion;
+    boolean salir = false;
     do {
-        colaTickets.mostrarMenu();
+        System.out.println("\n----------------------------------------------");
+        System.out.println("Sistema de Gestion de Tickets");
+        System.out.println("1. Agregar nuevo ticket");
+        System.out.println("2. Atender ticket");
+        System.out.println("3. Ver tickets en cola");
+        System.out.println("4. Salir");
+         System.out.println("----------------------------------------------");
+        System.out.print("Seleccione una opcion: ");
         opcion = scanner.nextInt();
-        scanner.nextLine(); // Consume el newline
+         System.out.println("----------------------------------------------");
+        System.out.println("\n\n");
+        scanner.nextLine();
 
         switch (opcion) {
             case 1:
-                colaTickets.agregarTicket(); // Pasar colaTickets como parámetro
+                colaTickets.agregarTicket(); 
                 break;
             case 2:
                 colaTickets.AtenderTickets();
@@ -32,12 +42,13 @@ public static void main(String[] args) {
                 break;
             case 4:
                 System.out.println("Saliendo del sistema de tickets.");
+                salir = true;
                 break;
             default:
-                System.out.println("Opción no reconocida, por favor intente de nuevo.");
+                System.out.println("Opcion no reconocida, por favor intente de nuevo.");
                 break;
         }
-    } while (opcion != 4);
+    } while (salir != true);
 }
 
 

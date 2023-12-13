@@ -36,7 +36,6 @@ public class ColaTickets {
         return contador;
     }
 
-    //push
     public void agregarTicket() {
         Scanner teclado = new Scanner(System.in);
         Ticket ticketNuevo = new Ticket(contadorTickets, "", "", "NUEVO");
@@ -50,44 +49,48 @@ public class ColaTickets {
         if (esVacia()) {
             frente = ticketNuevo;
             finalCola = ticketNuevo;
+            finalCola.estado = "PENDIENTE";
         } else {
             finalCola.siguiente = ticketNuevo;
+            finalCola.siguiente.estado = "PENDIENTE";
             finalCola = ticketNuevo;
+            finalCola.estado = "NUEVO"; 
+            
         }
 
-        System.out.println("Ticket agregado exitosamente.");
+        System.out.println("\nTicket agregado exitosamente.");
     }
-    //pop
 
 public void AtenderTickets() {
     if (esVacia()) {
         System.out.println("No hay tickets para atender.");
     } else {
-        // Atender el primer ticket en la cola
-        System.out.println("Atendiendo ticket número: " + frente.numeroTicket);
+        System.out.println("-----------------------------------------------");
+        System.out.println("Atendiendo ticket numero: " + frente.numeroTicket);
+        System.out.println("-----------------------------------------------");
+        System.out.println("Nombre: " + frente.nombreCliente);
+        System.out.println("Descripcion de la solicitud: \n" + frente.descripcion);
+        System.out.println("-----------------------------------------------");
         frente.estado = "COMPLETADO";
+        System.out.println("\n - Estado: " + frente.estado);
         frente = frente.siguiente;
+        if (frente != null) {
+            frente.estado = "PENDIENTE";
+        }
     }
 }
 
-    public void mostrarMenu() {
-        System.out.println("\nSistema de Gestión de Tickets");
-        System.out.println("1. Agregar nuevo ticket");
-        System.out.println("2. Atender ticket");
-        System.out.println("3. Ver tickets en cola");
-        System.out.println("4. Salir");
-        System.out.print("Seleccione una opción: ");
-    }
 
     public void VerTickets() {
         System.out.println("Tickets en la cola:");
         Ticket temporal = frente;
         while (temporal != null) {
-            System.out.println("Ticket número: " + temporal.numeroTicket
+            System.out.println("Ticket numero: " + temporal.numeroTicket
                     + " - Estado: " + temporal.estado
                     + " - Cliente: " + temporal.nombreCliente
-                    + " - Descripción: " + temporal.descripcion);
+                    + " - Descripcion: " + temporal.descripcion);
             temporal = temporal.siguiente;
         }
+        System.out.println("\n");
     }
 }
