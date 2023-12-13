@@ -13,10 +13,12 @@ public class Ticket {
     String nombreCliente;
     String descripcion;
     Ticket siguiente;
-    public Ticket (int NumeroTicket,String NombreCliente,String Descripcion){
+     String estado;
+    public Ticket (int NumeroTicket,String NombreCliente,String Descripcion, String Estado){
         numeroTicket = NumeroTicket;
         nombreCliente = NombreCliente;
         descripcion = Descripcion;
+        estado = Estado;
         siguiente = null;
     }
 }

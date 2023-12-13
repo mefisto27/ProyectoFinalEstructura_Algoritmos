@@ -4,20 +4,42 @@
  */
 package proyectofinalestructura_algoritmos;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Usuario
  */
 public class ProyectoFinalEstructura_Algoritmos {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    ColaTickets colaTickets = new ColaTickets(); // Crear una instancia de ColaTickets
+    int opcion;
+    do {
+        colaTickets.mostrarMenu();
+        opcion = scanner.nextInt();
+        scanner.nextLine(); // Consume el newline
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        /** interfaz de usuario: Desarrollar una interfaz de usuario que simule la interacción con el sistema. Los usuarios pueden agregar 
-nuevos tickets y ver cuál se está atendiendo en ese momento.
-Este sistema debe ser capaz de mostrar los tiquetes actuales, ver desde una pantalla cuales tiquetes están
-en estado nuevo, en progreso y completado. Se deben poder crear tiquetes y modificar los mismos */
-    }
-    
+        switch (opcion) {
+            case 1:
+                colaTickets.agregarTicket(); // Pasar colaTickets como parámetro
+                break;
+            case 2:
+                colaTickets.AtenderTickets();
+                break;
+            case 3:
+                colaTickets.VerTickets();
+                break;
+            case 4:
+                System.out.println("Saliendo del sistema de tickets.");
+                break;
+            default:
+                System.out.println("Opción no reconocida, por favor intente de nuevo.");
+                break;
+        }
+    } while (opcion != 4);
 }
+
+
+}
+
