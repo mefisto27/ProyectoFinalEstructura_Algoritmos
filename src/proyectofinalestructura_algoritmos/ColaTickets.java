@@ -54,32 +54,31 @@ public class ColaTickets {
             finalCola.siguiente = ticketNuevo;
             finalCola.siguiente.estado = "PENDIENTE";
             finalCola = ticketNuevo;
-            finalCola.estado = "NUEVO"; 
-            
+            finalCola.estado = "NUEVO";
+
         }
 
         System.out.println("\nTicket agregado exitosamente.");
     }
 
-public void AtenderTickets() {
-    if (esVacia()) {
-        System.out.println("No hay tickets para atender.");
-    } else {
-        System.out.println("-----------------------------------------------");
-        System.out.println("Atendiendo ticket numero: " + frente.numeroTicket);
-        System.out.println("-----------------------------------------------");
-        System.out.println("Nombre: " + frente.nombreCliente);
-        System.out.println("Descripcion de la solicitud: \n" + frente.descripcion);
-        System.out.println("-----------------------------------------------");
-        frente.estado = "COMPLETADO";
-        System.out.println("\n - Estado: " + frente.estado);
-        frente = frente.siguiente;
-        if (frente != null) {
-            frente.estado = "PENDIENTE";
+    public void AtenderTickets() {
+        if (esVacia()) {
+            System.out.println("No hay tickets para atender.");
+        } else {
+            System.out.println("-----------------------------------------------");
+            System.out.println("Atendiendo ticket numero: " + frente.numeroTicket);
+            System.out.println("-----------------------------------------------");
+            System.out.println("Nombre: " + frente.nombreCliente);
+            System.out.println("Descripcion de la solicitud: \n" + frente.descripcion);
+            System.out.println("-----------------------------------------------");
+            frente.estado = "COMPLETADO";
+            System.out.println("\n - Estado: " + frente.estado);
+            frente = frente.siguiente;
+            if (frente != null) {
+                frente.estado = "PENDIENTE";
+            }
         }
     }
-}
-
 
     public void VerTickets() {
         System.out.println("Tickets en la cola:");
